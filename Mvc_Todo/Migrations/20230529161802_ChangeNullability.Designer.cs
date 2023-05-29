@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mvc_Todo.Data;
 
@@ -11,9 +12,10 @@ using Mvc_Todo.Data;
 namespace Mvc_Todo.Migrations
 {
     [DbContext(typeof(Mvc_TodoContext))]
-    partial class Mvc_TodoContextModelSnapshot : ModelSnapshot
+    [Migration("20230529161802_ChangeNullability")]
+    partial class ChangeNullability
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Mvc_Todo.Areas.Identity.Data;
+using Mvc_Todo.Models;
 
 namespace Mvc_Todo.Data;
 
@@ -19,4 +20,7 @@ public class Mvc_TodoContext : IdentityDbContext<Mvc_TodoUser>
         // For example, you can rename the ASP.NET Identity table names and more.
         // Add your customizations after calling base.OnModelCreating(builder);
     }
+
+    public DbSet<Mvc_Todo.Models.ToDo>? ToDo { get; set; }
+
 }
