@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Mvc_Todo.Areas.Identity.Data;
@@ -45,6 +46,17 @@ namespace Mvc_Todo.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
         }
+
+        public SelectList RoleSelectList = new SelectList(
+            new List<SelectListItem>
+            {
+                new SelectListItem {Selected = true, Text = "Select Role", Value = ""},
+                new SelectListItem {Selected = true, Text = "Admin", Value ="Admin"},
+                new SelectListItem {Selected = true, Text = "User", Value = "Value"},
+            }, "Value", "Text", 1);
+
+
+
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -111,9 +123,12 @@ namespace Mvc_Todo.Areas.Identity.Pages.Account
 
             
             [Required]
-            [Display(Name = " Customer Address")]
+            [Display(Name = "Customer Address")]
             [DataType(DataType.Text)]
             public string Address { get; set; }
+
+            [Display(Name = "User Role")]
+            public string userrole { get; set; }
 
         }
 
@@ -137,7 +152,8 @@ namespace Mvc_Todo.Areas.Identity.Pages.Account
                     CustomerFullName = Input.customerfullname, 
                     CustomerDOB = Input.DoB, 
                     CustomerAddress = Input.Address,
-                    EmailConfirmed = true 
+                    EmailConfirmed = true,
+                    userrole = Input.userrole
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
 

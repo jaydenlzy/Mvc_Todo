@@ -13,5 +13,7 @@ public class Mvc_TodoUser : IdentityUser
     [PersonalData] public int CustomerAge { get; set; }
     [PersonalData] public string CustomerAddress { get; set; }
     [PersonalData] public DateTime CustomerDOB { get; set; }
+
+    [PersonalData] public string userrole { get; set; }
 }
 
